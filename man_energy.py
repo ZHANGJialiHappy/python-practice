@@ -8,7 +8,9 @@ def consecutive_six(numbers: str):
             if countConsectiveSix==2:
                 count+=1
             countConsectiveSix=0
+    if countConsectiveSix==2:
+        count+=1
     return count
 
 if __name__ == "__main__":
-   print(consecutive_six("15366611166266346666666416633"))
+   print(consecutive_six("566"))
