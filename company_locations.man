@@ -1,0 +1,82 @@
+{
+    "A": {
+        "codename": "A",
+        "city": "Shanghai",
+        "country": "China",
+        "x_coordinate": 11.57880409,
+        "y_coordinate": 11.32758975,
+        "fallback_employees": 76.05886115470516
+    },
+    "B": {
+        "codename": "B",
+        "city": "Singapore",
+        "country": "Singapore",
+        "x_coordinate": 10.26242809,
+        "y_coordinate": 9.56377798,
+        "fallback_employees": 658.7973177388795
+    },
+    "C": {
+        "codename": "C",
+        "city": "Busan",
+        "country": "SouthKorea",
+        "x_coordinate": 2.14848283,
+        "y_coordinate": 7.16968697,
+        "fallback_employees": 637.0808411130944
+    },
+    "D": {
+        "codename": "D",
+        "city": "Rotterdam",
+        "country": "TheNetherlands",
+        "x_coordinate": 6.98794546,
+        "y_coordinate": 3.74459155,
+        "fallback_employees": 397.6689585678586
+    },
+    "E": {
+        "codename": "E",
+        "city": "JebelAli",
+        "country": "UnitedArabEmirates",
+        "x_coordinate": 4.47313599,
+        "y_coordinate": 2.67233205,
+        "fallback_employees": 150.28229125129548
+    },
+    "F": {
+        "codename": "F",
+        "city": "PortKlang",
+        "country": "Malaysia",
+        "x_coordinate": 1.39138744,
+        "y_coordinate": 1.063151,
+        "fallback_employees": 177.4895256917328
+    },
+    "G": {
+        "codename": "G",
+        "city": "Antwerp",
+        "country": "Belgium",
+        "x_coordinate": 3.31739553,
+        "y_coordinate": 7.72261625,
+        "fallback_employees": 375.4968879212167
+    },
+    "H": {
+        "codename": "H",
+        "city": "LosAngeles",
+        "country": "U.S.A",
+        "x_coordinate": 7.64003707,
+        "y_coordinate": 1.59604341,
+        "fallback_employees": 333.41469714043615
+    },
+    "I": {
+        "codename": "I",
+        "city": "Hamburg",
+        "country": "Germany",
+        "x_coordinate": 6.47570221,
+        "y_coordinate": 11.12988683,
+        "fallback_employees": 108.16111631455259
+    },
+    "J": {
+        "codename": "J",
+        "city": "Piraeus",
+        "country": "Greece",
+        "x_coordinate": 3.02193963,
+        "y_coordinate": 11.53530526,
+        "fallback_employees": 85.54950310622853
+    }
+}

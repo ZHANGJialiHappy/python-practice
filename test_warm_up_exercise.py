@@ -1,5 +1,5 @@
 import unittest
-from man_energy import consecutive_six
+from warm_up_exercise import consecutive_six
 
 class TestConsecutiveSix(unittest.TestCase):
 
