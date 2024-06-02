@@ -1,6 +1,14 @@
-def consecutive_six():
+def consecutive_six(numbers: str):
+    count=0
     countConsectiveSix=0
-    return countConsectiveSix
+    for char in numbers:
+        if char == '6':
+            countConsectiveSix+=1
+        if char!= '6':
+            if countConsectiveSix==2:
+                count+=1
+            countConsectiveSix=0
+    return count
 
 if __name__ == "__main__":
-   print(consecutive_six())
+   print(consecutive_six("15366611166266346666666416633"))
