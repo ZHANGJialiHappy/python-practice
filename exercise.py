@@ -3,6 +3,8 @@ import json
 from math import sqrt
 from operator import itemgetter
 
+from matplotlib import pyplot as plt
+
 FILE_PATH = 'company_locations.man'
 CPH = (7, 9)
 
@@ -55,8 +57,8 @@ def convert(data):
         result.append({
             'codename': office['codename'],
             'employees_amount' : employees_amount,
-            'x_coordinate': value['x_coordinate'],
-            'y_coordinate': value['y_coordinate'],
+            'x_coordinate': office['x_coordinate'],
+            'y_coordinate': office['y_coordinate'],
             'diameter' : diameter
         })
     
@@ -80,6 +82,51 @@ def save_to_csv(array, filename):
         for item in array:
             writer.writerow(item)
 
+# Exercise 2c
+
+def save_to_image(data, filename):
+
+    fig, ax = plt.subplots(figsize=(8, 8))
+
+    for item in data:
+        id = item['id']
+        x = item['x_coordinate']
+        y = item['y_coordinate']
+        diameter = item['diameter']
+        codename = item['codename']
+        employees_amount = item['employees_amount']
+        label = f"{id},{codename}={employees_amount}"
+        # Plot the point
+        ax.scatter(x, y, label=label)
+
+        # Draw the circle
+        circle = plt.Circle((x, y), diameter / 2, color='blue', fill=False)
+        ax.add_artist(circle)
+
+        # Annotate the point with its codename
+        ax.annotate(codename, (x, y), textcoords="offset points", xytext=(0,10), ha='center')
+
+    # Set limits for x and y axis
+    ax.set_xlim(0, 12)
+    ax.set_ylim(0, 12)
+
+    # Add grid
+    ax.grid(True)
+
+    # Add labels and title
+    plt.xlabel("X Coordinate")
+    plt.ylabel("Y Coordinate")
+    plt.title("Locations of the offices")
+
+    # Add legend
+    plt.legend()
+
+    # Save plot as an image
+    plt.savefig(filename)
+
+    # Show plot
+    plt.show()
+
     
 if __name__ == "__main__":
     data = load_json_data(FILE_PATH)
@@ -89,9 +136,10 @@ if __name__ == "__main__":
     
     # Exercise 2b 
     offices = convert(data)
-    # necessary_data_csv = [{'codename': item['codename'], 'employees_amount': item['employees_amount']} for item in offices]
-    # save_to_csv(necessary_data_csv, 'offices_info.csv')
+    necessary_data_csv = [{'codename': item['codename'], 'employees_amount': item['employees_amount']} for item in offices]
+    save_to_csv(necessary_data_csv, 'exercise_2b.csv')
 
     # Exercise 2c
-    print(offices)
+    # offices = convert(data)
+    # save_to_image(offices,"exercise_2c.png")
 
