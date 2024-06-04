@@ -1,6 +1,6 @@
 from math import sqrt
 import unittest
-from exercise_2a import calculate_distance
+from exercise import calculate_distance
 
 class TestCalculateDistance(unittest.TestCase):
     def test_distance_between_same_point_is_zero(self):
