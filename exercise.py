@@ -11,12 +11,10 @@ def load_json_data(file_path):
         data = json.load(file)
     return data
 
-data = load_json_data(FILE_PATH)
-
 # should calculate all distance, and put in global?
 
 # exercise_2a
-def find_smallest_office():
+def find_smallest_office(data):
 
     longest_distance = 0
     farthest_point = None
@@ -32,9 +30,9 @@ def find_smallest_office():
 def calculate_distance(point1, point2):
     return sqrt((point2[0] - point1[0])**2 + (point2[1] - point1[1])**2)
 
-# exercise_2c
-def get_offices():
-    cph_office={'codename':'HQ', 'employees_amount' : 2000}
+# exercise_2b
+def convert(data):
+    cph_office={'codename':'HQ', 'employees_amount' : 2000, 'x_coordinate': 7, 'y_coordinate': 9, 'diameter' : 1.2 * (2000 / 1500) ** 0.5}
     offices=[]
     inverted_distances_sum=0
     result = []
@@ -46,13 +44,20 @@ def get_offices():
         inverted_distances_sum += inverse_distance
         offices.append({
             'codename': value['codename'],
-            'inverse_distance': inverse_distance
+            'inverse_distance': inverse_distance,
+            'x_coordinate': value['x_coordinate'],
+            'y_coordinate': value['y_coordinate']
         })
     # calculate every employees amount, and put it into city_info
     for office in offices:
+        employees_amount = round((office['inverse_distance'] / inverted_distances_sum * 3000), -1)
+        diameter = 1.2 * (employees_amount / 1500) ** 0.5
         result.append({
             'codename': office['codename'],
-            'employees_amount' : round((office['inverse_distance'] / inverted_distances_sum * 3000), -1)
+            'employees_amount' : employees_amount,
+            'x_coordinate': value['x_coordinate'],
+            'y_coordinate': value['y_coordinate'],
+            'diameter' : diameter
         })
     
     result.append(cph_office)
@@ -77,10 +82,16 @@ def save_to_csv(array, filename):
 
     
 if __name__ == "__main__":
+    data = load_json_data(FILE_PATH)
     # Exercise 2a 
-    office = find_smallest_office()
-    print(f"The smallest office is {office['city']} in {office['country']}")
+    # office = find_smallest_office(data)
+    # print(f"The smallest office is {office['city']} in {office['country']}")
     
     # Exercise 2b 
-    # office= get_offices()
-    # save_to_csv(office, 'office_info.csv')
+    offices = convert(data)
+    # necessary_data_csv = [{'codename': item['codename'], 'employees_amount': item['employees_amount']} for item in offices]
+    # save_to_csv(necessary_data_csv, 'offices_info.csv')
+
+    # Exercise 2c
+    print(offices)
+
