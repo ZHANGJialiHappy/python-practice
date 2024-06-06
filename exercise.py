@@ -72,6 +72,7 @@ def convert(data):
     
     result.append(cph_office)
 
+
     # Sort city_info by employees_amount
     result = sorted(result, key=lambda x: x['employees_amount'])
 
@@ -80,7 +81,6 @@ def convert(data):
         new_item = {'id': index}
         new_item.update(item)
         result[index] = new_item
-
     return result
 
 def save_to_csv(array, filename):
@@ -154,6 +154,31 @@ def party_info(data, party_point):
         }
     return result
 
+# Exercise 2g
+def total_travel_distance_from_location(location, data):
+    total_distance = 0
+    for other_location in data:
+        location_point = (location['x_coordinate'], location['y_coordinate'])
+        other_location_point = (other_location['x_coordinate'], other_location['y_coordinate'])
+        if location['id'] != other_location['id']:
+            distance = calculate_distance(location_point, other_location_point)
+            total_distance += distance * other_location['employees_amount']
+    return total_distance
+
+def find_optimal_location(data):
+    optimal_location = None
+    min_total_distance = float('inf')
+    for location in data:
+        total_distance = total_travel_distance_from_location(location, data)
+        if total_distance < min_total_distance:
+            min_total_distance = total_distance
+            optimal_location = location
+    
+    output_filename = 'optimal_location_coordinates.txt'
+    with open(output_filename, 'w') as file:
+        file.write(f"({optimal_location['x_coordinate']}, {optimal_location['y_coordinate']})")
+    print(f"The optimal location is {optimal_location['city']}, {optimal_location['country']} with coordinates ({optimal_location['x_coordinate']}, {optimal_location['y_coordinate']})")
+    return optimal_location
 
 if __name__ == "__main__":
     data = load_json_data(FILE_PATH)
@@ -163,9 +188,9 @@ if __name__ == "__main__":
     # print(f"The smallest office is {office['city']} in {office['country']}")
     
     # Exercise 2b 
-    offices = convert(data)
-    necessary_data_csv = [{'codename': item['codename'], 'employees_amount': item['employees_amount']} for item in offices]
-    save_to_csv(necessary_data_csv, 'exercise_2b.csv')
+    # offices = convert(data)
+    # necessary_data_csv = [{'codename': item['codename'], 'employees_amount': item['employees_amount']} for item in offices]
+    # save_to_csv(necessary_data_csv, 'exercise_2b.csv')
 
     # Exercise 2c
     # offices = convert(data)
@@ -194,3 +219,8 @@ if __name__ == "__main__":
     # save_to_csv(necessary_data_party, 'exercise_2d.csv')
     # csv_filename='exercise_2d.csv'
     # read_csv_and_generate_invivations(csv_filename)
+
+    #  Exercise 2g
+    # Print out the coordinates in the format given. What's the given format? coordinates (7,9)?
+    offices = convert(data)
+    find_optimal_location(offices)
