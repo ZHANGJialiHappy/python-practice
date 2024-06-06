@@ -35,9 +35,9 @@ def calculate_distance(point1, point2):
 
 # exercise_2b
 def convert(data):
-    cph_office={'codename':'HQ', 'employees_amount' : 2000, 'x_coordinate': 7, 'y_coordinate': 9, 'diameter' : 1.2 * (2000 / 1500) ** 0.5, 'city' : 'Copenhagen', 'country': "Denmark", 'distance': 0}
-    offices=[]
-    inverted_distances_sum=0
+    cph_office = {'codename':'HQ', 'employees_amount' : 2000, 'x_coordinate': 7, 'y_coordinate': 9, 'diameter' : 1.2 * (2000 / 1500) ** 0.5, 'city' : 'Copenhagen', 'country': "Denmark", 'distance': 0}
+    offices = []
+    inverted_distances_sum = 0
     result = []
  
     #calculate sum of inverted_distances and put every inverted_distance into list. 
@@ -83,15 +83,15 @@ def convert(data):
         result[index] = new_item
     return result
 
-def save_to_csv(array, filename):
-    if isinstance(array, dict):
-        array = list(array.values())
+def save_to_csv(data, filename):
+    if isinstance(data, dict):
+        data = list(data.values())
 
-    fieldnames = array[0].keys()
+    fieldnames = data[0].keys()
     with open(filename, 'w', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
-        for item in array:
+        for item in data:
             writer.writerow(item)
 
 # Exercise 2c
@@ -213,14 +213,14 @@ if __name__ == "__main__":
     '''
 
     #  Exercise 2f
-    # offices = convert(data)
-    # party_point= CPH
-    # necessary_data_party=party_info(offices, party_point)
-    # save_to_csv(necessary_data_party, 'exercise_2d.csv')
-    # csv_filename='exercise_2d.csv'
-    # read_csv_and_generate_invivations(csv_filename)
+    offices = convert(data)
+    party_point= CPH
+    necessary_data_party=party_info(offices, party_point)
+    save_to_csv(necessary_data_party, 'exercise_2d.csv')
+    csv_filename='exercise_2d.csv'
+    read_csv_and_generate_invivations(csv_filename)
 
     #  Exercise 2g
     # Print out the coordinates in the format given. What's the given format? coordinates (7,9)?
-    offices = convert(data)
-    find_optimal_location(offices)
+    # offices = convert(data)
+    # find_optimal_location(offices)
