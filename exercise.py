@@ -163,9 +163,9 @@ if __name__ == "__main__":
     # print(f"The smallest office is {office['city']} in {office['country']}")
     
     # Exercise 2b 
-    # offices = convert(data)
-    # necessary_data_csv = [{'codename': item['codename'], 'employees_amount': item['employees_amount']} for item in offices]
-    # save_to_csv(necessary_data_csv, 'exercise_2b.csv')
+    offices = convert(data)
+    necessary_data_csv = [{'codename': item['codename'], 'employees_amount': item['employees_amount']} for item in offices]
+    save_to_csv(necessary_data_csv, 'exercise_2b.csv')
 
     # Exercise 2c
     # offices = convert(data)
@@ -188,9 +188,9 @@ if __name__ == "__main__":
     '''
 
     #  Exercise 2f
-    offices = convert(data)
-    party_point= CPH
-    necessary_data_party=party_info(offices, party_point)
-    save_to_csv(necessary_data_party, 'exercise_2d.csv')
-    csv_filename='exercise_2d.csv'
-    read_csv_and_generate_invivations(csv_filename)
+    # offices = convert(data)
+    # party_point= CPH
+    # necessary_data_party=party_info(offices, party_point)
+    # save_to_csv(necessary_data_party, 'exercise_2d.csv')
+    # csv_filename='exercise_2d.csv'
+    # read_csv_and_generate_invivations(csv_filename)
