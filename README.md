@@ -1,8 +1,10 @@
 # How to start?
 
-1. pip install -r requirements.txt
-2. open the file exercise.py, or warm_up_exercise.py for the warm_up exercise
-3. check the result: codes to generate answers are after "if \_\_name\_\_ == "\_\_main\_\_":", not comment out the related code to check the answer.
+1. Create a Virtual Environment Using venv: python3 -m venv venv
+2. Activate the Virtual Environment: source venv/bin/activate
+3. Install library: pip3 install -r requirements.txt
+4. open the file exercise.py, or warm_up_exercise.py for the warm_up exercise
+5. check the result: codes to generate answers are after "if \_\_name\_\_ == "\_\_main\_\_":", not comment out the related code to check the answer.
 
 # explanation of answers
 
