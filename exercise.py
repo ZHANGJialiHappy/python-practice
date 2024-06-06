@@ -233,4 +233,4 @@ if __name__ == "__main__":
 
     #  Exercise 2g
     # Print out the coordinates in the format given. What's the given format? coordinates (7,9)?
-    find_optimal_location(offices, folder_name)
+    # find_optimal_location(offices, folder_name)
