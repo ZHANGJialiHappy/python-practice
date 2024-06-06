@@ -4,6 +4,8 @@ from math import sqrt
 
 from matplotlib import pyplot as plt
 
+from invitation_module import read_csv_and_generate_invivations
+
 FILE_PATH = 'company_locations.man'
 CPH = (7, 9)
 
@@ -152,6 +154,7 @@ def party_info(data, party_point):
         }
     return result
 
+
 if __name__ == "__main__":
     data = load_json_data(FILE_PATH)
     # Exercise 2a 
@@ -169,11 +172,11 @@ if __name__ == "__main__":
     # save_to_image(offices,"exercise_2c.png")
 
     # Exercise 2d
-    offices = convert(data)
-    party_point= CPH
-    necessary_data_party=party_info(offices, party_point)
-    print(necessary_data_party)
-    save_to_csv(necessary_data_party, 'exercise_2d.csv')
+    # offices = convert(data)
+    # party_point= CPH
+    # necessary_data_party=party_info(offices, party_point)
+    # print(necessary_data_party)
+    # save_to_csv(necessary_data_party, 'exercise_2d.csv')
 
     # Exercise 2e
     '''
@@ -182,3 +185,11 @@ if __name__ == "__main__":
         we should know the responds of the employees, so that we know how many people will attend the party.
         max: 500dkk*5000 = 2500000 dkk
     '''
+
+    #  Exercise 2f
+    offices = convert(data)
+    party_point= CPH
+    necessary_data_party=party_info(offices, party_point)
+    save_to_csv(necessary_data_party, 'exercise_2d.csv')
+    csv_filename='exercise_2d.csv'
+    read_csv_and_generate_invivations(csv_filename)
