@@ -1,4 +1,5 @@
 import csv
+import os
 
 
 class Invitation:
@@ -17,8 +18,16 @@ you will get reimbursed {self.reimbursement} DKK for the travelled distance to t
         """
         return invitation_text.strip()
 
-def read_csv_and_generate_invivations(filename):
-    with open(filename, 'r') as csvfile:
+def read_csv_and_generate_invivations(filename, folder_name):
+
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_folder_path = os.path.join(script_dir, folder_name)
+    csv_file_path = os.path.join(csv_folder_path, filename)
+
+    if not os.path.exists(csv_folder_path):
+        os.makedirs(csv_folder_path)
+
+    with open(csv_file_path, 'r') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             invitation =Invitation(
@@ -30,6 +39,7 @@ def read_csv_and_generate_invivations(filename):
             )
             invitation_text = invitation.generate_invitation()
             office_code = row['A'].replace(",", "")
-            with open(f'invitation_{office_code}.txt', 'w') as invitation_file:
+            file_path = os.path.join(folder_name, f'invitation_{office_code}.txt')
+            with open(file_path, 'w') as invitation_file:
                 invitation_file.write(invitation_text)
                 print(f"Invitation for office {office_code} has been written to invitation_{office_code}.txt")

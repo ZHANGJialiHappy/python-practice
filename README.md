@@ -8,13 +8,15 @@
 
 # explanation of answers
 
+all the image and files are in the results folder
+
 ## exercise 2a
 
 scan the whole data -> caculate the distance between Copenhagen and each office -> record the farthest office -> return it(farthest office have least employee amount)
 
 ## exercise 2b
 
-1. develpe a **reuseable function** convert(data): scan the whole data -> calculate inverted_distances_sum, put inverse_distance, codename and other infomation (it will be needed in other exercises) into offices[] -> scan offices[] append calculated diameter and employees_amount and other infos into result[] -> append cph_office to result[] (because employee amount of cph is constant) -> sort by employees_amount -> add id in ascending order
+1. develpe a **reuseable function** convert(data): scan the whole data -> calculate inverted_distances_sum, put inverse_distance, codename and other infomation (it will be needed in other exercises) for each office into offices[] -> scan offices[] append calculated diameter and employees_amount and other infos into result[] -> append cph_office to result[] (because employee amount of cph is constant) -> sort by employees_amount -> add id in ascending order
 2. develop a **reuseable function** save_to_csv(array, filename). It can accept array or dict, then write information into csv file
 
 ## Exercise 2c
@@ -45,3 +47,7 @@ What's the given format of coordination? coordinates (7,9)?
 
 1. develop function total_travel_distance_from_location(location, data) to calculate the total travel distance of all employees between the given location and other location.
 2. develop find_optimal_location(data) to scan all data -> calculate all total_travel_distance_from_location -> find the smallest total_travel_distance_from_location (it's where to holde party) -> print coorination into txt file
+
+# Reflect
+
+should I have a class? In its constructor, convert(data) will be called to initialise offices[].

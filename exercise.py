@@ -1,6 +1,7 @@
 import csv
 import json
 from math import sqrt
+import os
 
 from matplotlib import pyplot as plt
 
@@ -83,12 +84,16 @@ def convert(data):
         result[index] = new_item
     return result
 
-def save_to_csv(data, filename):
+def save_to_csv(data, filename, folder_name):
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+    file_path = os.path.join(folder_name, filename)
+
     if isinstance(data, dict):
         data = list(data.values())
 
     fieldnames = data[0].keys()
-    with open(filename, 'w', newline='') as csvfile:
+    with open(file_path, 'w', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         for item in data:
@@ -96,7 +101,10 @@ def save_to_csv(data, filename):
 
 # Exercise 2c
 
-def save_to_image(data, filename):
+def save_to_image(data, filename, folder_name):
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+    file_path = os.path.join(folder_name, filename)
 
     fig, ax = plt.subplots(figsize=(8, 8))
 
@@ -134,11 +142,12 @@ def save_to_image(data, filename):
     plt.legend()
 
     # Save plot as an image
-    plt.savefig(filename)
+    plt.savefig(file_path)
 
     # Show plot
     plt.show()
 
+    print(f"Image has been saved to {file_path}")
 
 # Exercise 2d
 def party_info(data, party_point):
@@ -165,7 +174,7 @@ def total_travel_distance_from_location(location, data):
             total_distance += distance * other_location['employees_amount']
     return total_distance
 
-def find_optimal_location(data):
+def find_optimal_location(data, folder_name):
     optimal_location = None
     min_total_distance = float('inf')
     for location in data:
@@ -174,7 +183,7 @@ def find_optimal_location(data):
             min_total_distance = total_distance
             optimal_location = location
     
-    output_filename = 'optimal_location_coordinates.txt'
+    output_filename = os.path.join(folder_name, 'optimal_location_coordinates.txt')    
     with open(output_filename, 'w') as file:
         file.write(f"({optimal_location['x_coordinate']}, {optimal_location['y_coordinate']})")
     print(f"The optimal location is {optimal_location['city']}, {optimal_location['country']} with coordinates ({optimal_location['x_coordinate']}, {optimal_location['y_coordinate']})")
@@ -183,26 +192,29 @@ def find_optimal_location(data):
 if __name__ == "__main__":
     data = load_json_data(FILE_PATH)
 
+    offices = convert(data)
+
+    folder_name = 'results'
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+
     # Exercise 2a 
     # office = find_smallest_office(data)
     # print(f"The smallest office is {office['city']} in {office['country']}")
     
     # Exercise 2b 
-    # offices = convert(data)
     # necessary_data_csv = [{'codename': item['codename'], 'employees_amount': item['employees_amount']} for item in offices]
-    # save_to_csv(necessary_data_csv, 'exercise_2b.csv')
+    # save_to_csv(necessary_data_csv, 'exercise_2b.csv', folder_name)
 
     # Exercise 2c
-    # offices = convert(data)
     # necessary_data_image=[{'codename': item['codename'], 'employees_amount': item['employees_amount'], 'x_coordinate': item['x_coordinate'], 'y_coordinate': item['y_coordinate'], 'diameter': item['diameter']} for item in offices]
-    # save_to_image(offices,"exercise_2c.png")
+    # save_to_image(offices,"exercise_2c.png", folder_name)
 
     # Exercise 2d
-    # offices = convert(data)
     # party_point= CPH
     # necessary_data_party=party_info(offices, party_point)
     # print(necessary_data_party)
-    # save_to_csv(necessary_data_party, 'exercise_2d.csv')
+    # save_to_csv(necessary_data_party, 'exercise_2d.csv', folder_name)
 
     # Exercise 2e
     '''
@@ -213,14 +225,12 @@ if __name__ == "__main__":
     '''
 
     #  Exercise 2f
-    offices = convert(data)
-    party_point= CPH
-    necessary_data_party=party_info(offices, party_point)
-    save_to_csv(necessary_data_party, 'exercise_2d.csv')
-    csv_filename='exercise_2d.csv'
-    read_csv_and_generate_invivations(csv_filename)
+    # party_point= CPH
+    # necessary_data_party=party_info(offices, party_point)
+    # save_to_csv(necessary_data_party, 'exercise_2d.csv', folder_name)
+    # csv_filename='exercise_2d.csv'
+    # read_csv_and_generate_invivations(csv_filename, folder_name)
 
     #  Exercise 2g
     # Print out the coordinates in the format given. What's the given format? coordinates (7,9)?
-    # offices = convert(data)
-    # find_optimal_location(offices)
+    find_optimal_location(offices, folder_name)
