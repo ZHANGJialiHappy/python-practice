@@ -157,6 +157,7 @@ def party_info(data, party_point):
 
 if __name__ == "__main__":
     data = load_json_data(FILE_PATH)
+
     # Exercise 2a 
     # office = find_smallest_office(data)
     # print(f"The smallest office is {office['city']} in {office['country']}")
@@ -183,7 +184,7 @@ if __name__ == "__main__":
     If the dinner cost 500dkk per employee, what is the total cost for the company
     Answer: 
         we should know the responds of the employees, so that we know how many people will attend the party.
-        max: 500dkk*5000 = 2500000 dkk
+        max: 500dkk*5000 = 2500000 dkk (In the email, it doesn't ask employee to respond, so better to prepare enough money.)
     '''
 
     #  Exercise 2f
