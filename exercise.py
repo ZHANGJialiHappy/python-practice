@@ -79,7 +79,7 @@ def convert(data):
 
     # Add ID for each object
     for index, item in enumerate(result):
-        new_item = {'id': index}
+        new_item = {'ID': index}
         new_item.update(item)
         result[index] = new_item
     return result
@@ -203,8 +203,8 @@ if __name__ == "__main__":
     # print(f"The smallest office is {office['city']} in {office['country']}")
     
     # Exercise 2b 
-    # necessary_data_csv = [{'codename': item['codename'], 'employees_amount': item['employees_amount']} for item in offices]
-    # save_to_csv(necessary_data_csv, 'exercise_2b.csv', folder_name)
+    necessary_data_csv = [{'ID': item['ID'], 'codename': item['codename'], 'employees_amount': item['employees_amount']} for item in offices]
+    save_to_csv(necessary_data_csv, 'exercise_2b.csv', folder_name)
 
     # Exercise 2c
     # necessary_data_image=[{'codename': item['codename'], 'employees_amount': item['employees_amount'], 'x_coordinate': item['x_coordinate'], 'y_coordinate': item['y_coordinate'], 'diameter': item['diameter']} for item in offices]
