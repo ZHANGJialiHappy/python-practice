@@ -109,7 +109,7 @@ def save_to_image(data, filename, folder_name):
     fig, ax = plt.subplots(figsize=(8, 8))
 
     for item in data:
-        id = item['id']
+        id = item['ID']
         x = item['x_coordinate']
         y = item['y_coordinate']
         diameter = item['diameter']
@@ -203,12 +203,12 @@ if __name__ == "__main__":
     # print(f"The smallest office is {office['city']} in {office['country']}")
     
     # Exercise 2b 
-    necessary_data_csv = [{'ID': item['ID'], 'codename': item['codename'], 'employees_amount': item['employees_amount']} for item in offices]
-    save_to_csv(necessary_data_csv, 'exercise_2b.csv', folder_name)
+    # necessary_data_csv = [{'ID': item['ID'], 'codename': item['codename'], 'employees_amount': item['employees_amount']} for item in offices]
+    # save_to_csv(necessary_data_csv, 'exercise_2b.csv', folder_name)
 
     # Exercise 2c
-    # necessary_data_image=[{'codename': item['codename'], 'employees_amount': item['employees_amount'], 'x_coordinate': item['x_coordinate'], 'y_coordinate': item['y_coordinate'], 'diameter': item['diameter']} for item in offices]
-    # save_to_image(offices,"exercise_2c.png", folder_name)
+    necessary_data_image=[{'ID': item['ID'], 'codename': item['codename'], 'employees_amount': item['employees_amount'], 'x_coordinate': item['x_coordinate'], 'y_coordinate': item['y_coordinate'], 'diameter': item['diameter']} for item in offices]
+    save_to_image(necessary_data_image,"exercise_2c.png", folder_name)
 
     # Exercise 2d
     # party_point= CPH
