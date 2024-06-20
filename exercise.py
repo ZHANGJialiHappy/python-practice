@@ -169,7 +169,7 @@ def total_travel_distance_from_location(location, data):
     for other_location in data:
         location_point = (location['x_coordinate'], location['y_coordinate'])
         other_location_point = (other_location['x_coordinate'], other_location['y_coordinate'])
-        if location['id'] != other_location['id']:
+        if location['ID'] != other_location['ID']:
             distance = calculate_distance(location_point, other_location_point)
             total_distance += distance * other_location['employees_amount']
     return total_distance
@@ -207,8 +207,8 @@ if __name__ == "__main__":
     # save_to_csv(necessary_data_csv, 'exercise_2b.csv', folder_name)
 
     # Exercise 2c
-    necessary_data_image=[{'ID': item['ID'], 'codename': item['codename'], 'employees_amount': item['employees_amount'], 'x_coordinate': item['x_coordinate'], 'y_coordinate': item['y_coordinate'], 'diameter': item['diameter']} for item in offices]
-    save_to_image(necessary_data_image,"exercise_2c.png", folder_name)
+    # necessary_data_image=[{'ID': item['ID'], 'codename': item['codename'], 'employees_amount': item['employees_amount'], 'x_coordinate': item['x_coordinate'], 'y_coordinate': item['y_coordinate'], 'diameter': item['diameter']} for item in offices]
+    # save_to_image(necessary_data_image,"exercise_2c.png", folder_name)
 
     # Exercise 2d
     # party_point= CPH
@@ -233,4 +233,4 @@ if __name__ == "__main__":
 
     #  Exercise 2g
     # Print out the coordinates in the format given. What's the given format? coordinates (7,9)?
-    # find_optimal_location(offices, folder_name)
+    find_optimal_location(offices, folder_name)
