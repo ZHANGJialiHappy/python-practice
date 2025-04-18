@@ -3,7 +3,7 @@ class Solution:
         for i in range(rows):
             space = ' ' * i
             stars = '*' * (2*(rows-i) -1)
-            print(space + stars)
+            print(f'{space}{stars}')
             
 if __name__=="__main__":
     s = Solution()
